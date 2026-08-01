@@ -24,6 +24,65 @@ const supporterLogos = [
 	{ src: stiftungAnneMarieSchindlerLogo, alt: 'Stiftung Anne-Marie Schindler', size: 'h-20' },
 	{ src: kulturkommissionWetzikonLogo, alt: 'Kulturkommission Wetzikon', size: 'h-14 sm:h-16' },
 ];
+
+const siteUrl = 'https://youkali.ch/';
+const pageTitle = 'ON THE MOON – Zeitgenössischer Zirkus für junges Publikum | Cie. Youkali';
+const pageDescription = 'ON THE MOON verbindet Luftakrobatik, Physical Theatre, Tanz und Live-Sound zu einem zeitgenössischen Zirkusstück für junges Publikum in Zürich.';
+const shareImageUrl = `${siteUrl}imgs/On_The_Moon_ZW_077.webp`;
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': `${siteUrl}#organization`,
+			name: 'Cie. Youkali',
+			url: siteUrl,
+			email: 'info@valeavolcker.com',
+			address: {
+				'@type': 'PostalAddress',
+				streetAddress: 'Morgenstrasse 30',
+				postalCode: '8620',
+				addressLocality: 'Wetzikon',
+				addressCountry: 'CH',
+			},
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${siteUrl}#website`,
+			url: siteUrl,
+			name: 'Cie. Youkali',
+			inLanguage: 'de-CH',
+			publisher: { '@id': `${siteUrl}#organization` },
+		},
+		...[
+			['2026-10-23T20:00:00+02:00', 'https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25959'],
+			['2026-10-24T18:00:00+02:00', 'https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25960'],
+			['2026-10-25T17:00:00+01:00', 'https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25961'],
+		].map(([startDate, url]) => ({
+			'@type': 'Event',
+			name: 'ON THE MOON – Cie. Youkali',
+			url,
+			startDate,
+			eventStatus: 'https://schema.org/EventScheduled',
+			eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+			image: [shareImageUrl],
+			description: pageDescription,
+			location: {
+				'@type': 'Place',
+				name: 'Zirkusquartier Zürich',
+				address: {
+					'@type': 'PostalAddress',
+					streetAddress: 'Hohlstrasse 256',
+					postalCode: '8004',
+					addressLocality: 'Zürich',
+					addressCountry: 'CH',
+				},
+			},
+			organizer: { '@id': `${siteUrl}#organization` },
+			performer: { '@id': `${siteUrl}#organization` },
+		})),
+	],
+};
 ---
 
 <html lang="de" class="scroll-smooth">
@@ -33,9 +92,23 @@ const supporterLogos = [
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="canonical" href={siteUrl} />
 		<link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-		<meta name="description" content="ON THE MOON - Eine Kreation der Cie. Youkali. Luftakrobatik, Physical Theatre und Live-Sound." />
-		<title>ON THE MOON | Cie. Youkali</title>
+		<meta name="description" content={pageDescription} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="de_CH" />
+		<meta property="og:site_name" content="Cie. Youkali" />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:image" content={shareImageUrl} />
+		<meta property="og:image:alt" content="Szene aus ON THE MOON der Cie. Youkali" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
+		<meta name="twitter:image" content={shareImageUrl} />
+		<title>{pageTitle}</title>
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	</head>
 	<body class="bg-zinc-950 font-sans leading-relaxed text-zinc-100 antialiased">
 		<!-- Hero Section -->

@@ -1,12 +1,12 @@
 ---
 const images = [
-  { src: "/imgs/On_The_Moon_ZQ_015.webp", alt: "ON THE MOON Performance" },
-  { src: "/imgs/On_The_Moon_ZQ_075.webp", alt: "ON THE MOON Performance" },
-  { src: "/imgs/On_The_Moon_ZQ_086.webp", alt: "ON THE MOON Performance" },
-  { src: "/imgs/On_The_Moon_ZW_062.webp", alt: "ON THE MOON Performance" },
-  { src: "/imgs/On_The_Moon_ZW_077.webp", alt: "ON THE MOON Performance" },
-  { src: "/imgs/On_The_Moon_ZW_087.webp", alt: "ON THE MOON Performance" },
-  { src: "/imgs/On_The_Moon_ZW_141.webp", alt: "ON THE MOON Performance" },
+  { src: "/imgs/On_The_Moon_ZQ_015.webp", alt: "Drei Performer:innen von ON THE MOON unter einem leuchtenden Mond", width: 1920, height: 1281 },
+  { src: "/imgs/On_The_Moon_ZQ_075.webp", alt: "Luftakrobatik in ON THE MOON", width: 1067, height: 1600 },
+  { src: "/imgs/On_The_Moon_ZQ_086.webp", alt: "Ensembleszene aus ON THE MOON im Zirkusquartier Zürich", width: 1600, height: 1067 },
+  { src: "/imgs/On_The_Moon_ZW_062.webp", alt: "Artistische Szene der Ideationsphase von ON THE MOON", width: 1281, height: 1920 },
+  { src: "/imgs/On_The_Moon_ZW_077.webp", alt: "Physical-Theatre-Szene aus ON THE MOON", width: 1920, height: 1281 },
+  { src: "/imgs/On_The_Moon_ZW_087.webp", alt: "Performer:innen erforschen den Mond in ON THE MOON", width: 1600, height: 1067 },
+  { src: "/imgs/On_The_Moon_ZW_141.webp", alt: "Abschlussszene der ON THE MOON Ideationsphase", width: 1600, height: 1067 },
 ];
 ---
 
@@ -42,6 +42,8 @@ const images = [
           <img
             src={img.src}
             alt={img.alt}
+			width={img.width}
+			height={img.height}
             loading="lazy"
             decoding="async"
             fetchpriority="low"
