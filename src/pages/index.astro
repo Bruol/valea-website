@@ -1,342 +1,641 @@
 ---
-import { Image } from 'astro:assets';
-import '../styles/global.css';
-import Gallery from '../components/Gallery.astro';
-import heroImageWebp from '../assets/On_The_Moon_ZW_111kopie.webp';
-import ethLogo from '../assets/eth_logo_kurz_neg.webp';
-import uniBernLogo from '../assets/uni bern logo.webp';
-import swissSpaceMuseumLogo from '../assets/swiss space museum logo.webp';
-import zirkusQuartierLogo from '../assets/zirkus quartier logo.webp';
-import ernstGoehnerStiftungLogo from '../assets/supporters/ernst-goehner-stiftung.webp';
-import kantonZuerichSwisslosLogo from '../assets/supporters/kanton-zuerich-swisslos.webp';
-import kulturkommissionWetzikonLogo from '../assets/supporters/kulturkommission-wetzikon.webp';
-import migrosKulturprozentLogo from '../assets/supporters/migros-kulturprozent.webp';
-import ssaLogo from '../assets/supporters/ssa.webp';
-import stadtZuerichKulturLogo from '../assets/supporters/stadt-zuerich-kultur.webp';
-import stiftungAnneMarieSchindlerLogo from '../assets/supporters/stiftung-anne-marie-schindler.webp';
+import { Image } from "astro:assets";
+import "../styles/global.css";
+import Gallery from "../components/Gallery.astro";
+import heroImageWebp from "../assets/On_The_Moon_ZW_111kopie.webp";
+import ethLogo from "../assets/eth_logo_kurz_neg.webp";
+import uniBernLogo from "../assets/uni bern logo.webp";
+import swissSpaceMuseumLogo from "../assets/swiss space museum logo.webp";
+import zirkusQuartierLogo from "../assets/zirkus quartier logo.webp";
+import ernstGoehnerStiftungLogo from "../assets/supporters/ernst-goehner-stiftung.webp";
+import kantonZuerichSwisslosLogo from "../assets/supporters/kanton-zuerich-swisslos.webp";
+import kulturkommissionWetzikonLogo from "../assets/supporters/kulturkommission-wetzikon.webp";
+import migrosKulturprozentLogo from "../assets/supporters/migros-kulturprozent.webp";
+import ssaLogo from "../assets/supporters/ssa.webp";
+import stadtZuerichKulturLogo from "../assets/supporters/stadt-zuerich-kultur.webp";
+import stiftungAnneMarieSchindlerLogo from "../assets/supporters/stiftung-anne-marie-schindler.webp";
 
 const supporterLogos = [
-	{ src: ernstGoehnerStiftungLogo, alt: 'Ernst Göhner Stiftung', size: 'h-14 sm:h-16' },
-	{ src: migrosKulturprozentLogo, alt: 'Migros Kulturprozent', size: 'h-12 sm:h-14' },
-	{ src: kantonZuerichSwisslosLogo, alt: 'Kanton Zürich Kulturförderung und Swisslos', size: 'h-11 sm:h-12' },
-	{ src: stadtZuerichKulturLogo, alt: 'Stadt Zürich Kultur', size: 'h-12 sm:h-14' },
-	{ src: ssaLogo, alt: 'Société Suisse des Auteurs', size: 'h-14 sm:h-16' },
-	{ src: stiftungAnneMarieSchindlerLogo, alt: 'Stiftung Anne-Marie Schindler', size: 'h-20' },
-	{ src: kulturkommissionWetzikonLogo, alt: 'Kulturkommission Wetzikon', size: 'h-14 sm:h-16' },
+  {
+    src: ernstGoehnerStiftungLogo,
+    alt: "Ernst Göhner Stiftung",
+    size: "h-14 sm:h-16",
+  },
+  {
+    src: migrosKulturprozentLogo,
+    alt: "Migros Kulturprozent",
+    size: "h-12 sm:h-14",
+  },
+  {
+    src: kantonZuerichSwisslosLogo,
+    alt: "Kanton Zürich Kulturförderung und Swisslos",
+    size: "h-11 sm:h-12",
+  },
+  {
+    src: stadtZuerichKulturLogo,
+    alt: "Stadt Zürich Kultur",
+    size: "h-12 sm:h-14",
+  },
+  { src: ssaLogo, alt: "Société Suisse des Auteurs", size: "h-14 sm:h-16" },
+  {
+    src: stiftungAnneMarieSchindlerLogo,
+    alt: "Stiftung Anne-Marie Schindler",
+    size: "h-20",
+  },
+  {
+    src: kulturkommissionWetzikonLogo,
+    alt: "Kulturkommission Wetzikon",
+    size: "h-14 sm:h-16",
+  },
 ];
 
-const siteUrl = 'https://youkali.ch/';
-const pageTitle = 'ON THE MOON – Zeitgenössischer Zirkus für junges Publikum | Cie. Youkali';
-const pageDescription = 'ON THE MOON verbindet Luftakrobatik, Physical Theatre, Tanz und Live-Sound zu einem zeitgenössischen Zirkusstück für junges Publikum in Zürich.';
+const siteUrl = "https://youkali.ch/";
+const pageTitle =
+  "ON THE MOON – Zeitgenössischer Zirkus für junges Publikum | Cie. Youkali";
+const pageDescription =
+  "ON THE MOON verbindet Luftakrobatik, Physical Theatre, Tanz und Live-Sound zu einem zeitgenössischen Zirkusstück für junges Publikum in Zürich.";
 const shareImageUrl = `${siteUrl}imgs/On_The_Moon_ZW_077.webp`;
 const structuredData = {
-	'@context': 'https://schema.org',
-	'@graph': [
-		{
-			'@type': 'Organization',
-			'@id': `${siteUrl}#organization`,
-			name: 'Cie. Youkali',
-			url: siteUrl,
-			email: 'info@valeavolcker.com',
-			address: {
-				'@type': 'PostalAddress',
-				streetAddress: 'Morgenstrasse 30',
-				postalCode: '8620',
-				addressLocality: 'Wetzikon',
-				addressCountry: 'CH',
-			},
-		},
-		{
-			'@type': 'WebSite',
-			'@id': `${siteUrl}#website`,
-			url: siteUrl,
-			name: 'Cie. Youkali',
-			inLanguage: 'de-CH',
-			publisher: { '@id': `${siteUrl}#organization` },
-		},
-		...[
-			['2026-10-23T20:00:00+02:00', 'https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25959'],
-			['2026-10-24T18:00:00+02:00', 'https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25960'],
-			['2026-10-25T17:00:00+01:00', 'https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25961'],
-		].map(([startDate, url]) => ({
-			'@type': 'Event',
-			name: 'ON THE MOON – Cie. Youkali',
-			url,
-			startDate,
-			eventStatus: 'https://schema.org/EventScheduled',
-			eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-			image: [shareImageUrl],
-			description: pageDescription,
-			location: {
-				'@type': 'Place',
-				name: 'Zirkusquartier Zürich',
-				address: {
-					'@type': 'PostalAddress',
-					streetAddress: 'Hohlstrasse 256',
-					postalCode: '8004',
-					addressLocality: 'Zürich',
-					addressCountry: 'CH',
-				},
-			},
-			organizer: { '@id': `${siteUrl}#organization` },
-			performer: { '@id': `${siteUrl}#organization` },
-		})),
-	],
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}#organization`,
+      name: "Cie. Youkali",
+      url: siteUrl,
+      email: "info@valeavolcker.com",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Morgenstrasse 30",
+        postalCode: "8620",
+        addressLocality: "Wetzikon",
+        addressCountry: "CH",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}#website`,
+      url: siteUrl,
+      name: "Cie. Youkali",
+      inLanguage: "de-CH",
+      publisher: { "@id": `${siteUrl}#organization` },
+    },
+    ...[
+      [
+        "2026-10-23T20:00:00+02:00",
+        "https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25959",
+      ],
+      [
+        "2026-10-24T18:00:00+02:00",
+        "https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25960",
+      ],
+      [
+        "2026-10-25T17:00:00+01:00",
+        "https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25961",
+      ],
+    ].map(([startDate, url]) => ({
+      "@type": "Event",
+      name: "ON THE MOON – Cie. Youkali",
+      url,
+      startDate,
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      image: [shareImageUrl],
+      description: pageDescription,
+      location: {
+        "@type": "Place",
+        name: "Zirkusquartier Zürich",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Hohlstrasse 256",
+          postalCode: "8004",
+          addressLocality: "Zürich",
+          addressCountry: "CH",
+        },
+      },
+      organizer: { "@id": `${siteUrl}#organization` },
+      performer: { "@id": `${siteUrl}#organization` },
+    })),
+  ],
 };
 ---
 
 <html lang="de" class="scroll-smooth">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="canonical" href={siteUrl} />
-		<link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-		<meta name="description" content={pageDescription} />
-		<meta property="og:type" content="website" />
-		<meta property="og:locale" content="de_CH" />
-		<meta property="og:site_name" content="Cie. Youkali" />
-		<meta property="og:title" content={pageTitle} />
-		<meta property="og:description" content={pageDescription} />
-		<meta property="og:url" content={siteUrl} />
-		<meta property="og:image" content={shareImageUrl} />
-		<meta property="og:image:alt" content="Szene aus ON THE MOON der Cie. Youkali" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={pageTitle} />
-		<meta name="twitter:description" content={pageDescription} />
-		<meta name="twitter:image" content={shareImageUrl} />
-		<title>{pageTitle}</title>
-		<!-- Privacy-friendly analytics by Plausible -->
-		<script async src="https://plausible.bruol.me/js/pa-GQkuf2AkQV9F3O8Q2XFsQ.js"></script>
-		<script is:inline>
-			window.plausible = window.plausible || function () {
-				(plausible.q = plausible.q || []).push(arguments);
-			};
-			plausible.init = plausible.init || function (options) {
-				plausible.o = options || {};
-			};
-			plausible.init();
-		</script>
-		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-	</head>
-	<body class="bg-zinc-950 font-sans leading-relaxed text-zinc-100 antialiased">
-		<!-- Hero Section -->
-		<section class="relative flex min-h-screen items-start overflow-hidden">
-			<div class="absolute inset-0 z-0 after:absolute after:inset-0 after:bg-gradient-to-b after:from-black/30 after:via-black/10 after:to-black/60 after:content-['']">
-				<Image
-					src={heroImageWebp}
-					alt="ON THE MOON Performance"
-					widths={[640, 1024, 1920]}
-					sizes="100vw"
-					quality={80}
-					loading="eager"
-					class="h-full w-full object-cover object-center"
-				/>
-			</div>
-			<div class="relative z-10 mt-8 px-6 py-12 md:px-10">
-				<p class="-mt-6 mb-10 pl-1 text-[2rem] font-semibold uppercase tracking-[0.15em] opacity-90">Cie. Youkali</p>
-				<h1 class="mb-4 text-[clamp(6rem,26vw,9rem)] font-bold leading-none tracking-[0.03em] [text-shadow:2px_4px_20px_rgba(0,0,0,0.5)]">ON THE MOON</h1>
-			</div>
-			<p class="absolute bottom-2.5 right-2.5 z-20 m-0 max-w-[calc(100%-4rem)] text-xs opacity-60 md:max-w-none">© David Schelker</p>
-			<a href="#about" class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/70 transition hover:text-white hover:no-underline" aria-label="Scroll down">
-				<svg class="animate-bounce" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-				</svg>
-			</a>
-		</section>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={siteUrl} />
+    <link
+      rel="preload"
+      href="/fonts/manrope-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta name="description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_CH" />
+    <meta property="og:site_name" content="Cie. Youkali" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={shareImageUrl} />
+    <meta
+      property="og:image:alt"
+      content="Szene aus ON THE MOON der Cie. Youkali"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={shareImageUrl} />
+    <title>{pageTitle}</title>
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script
+      async
+      src="https://plausible.bruol.me/js/pa-GQkuf2AkQV9F3O8Q2XFsQ.js"></script>
+    <script is:inline>
+      window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        };
+      plausible.init =
+        plausible.init ||
+        function (options) {
+          plausible.o = options || {};
+        };
+      plausible.init();
+    </script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+  </head>
+  <body class="bg-zinc-950 font-sans leading-relaxed text-zinc-100 antialiased">
+    <!-- Hero Section -->
+    <section class="relative flex min-h-screen items-start overflow-hidden">
+      <div
+        class="absolute inset-0 z-0 after:absolute after:inset-0 after:bg-gradient-to-b after:from-black/30 after:via-black/10 after:to-black/60 after:content-['']"
+      >
+        <Image
+          src={heroImageWebp}
+          alt="ON THE MOON Performance"
+          widths={[640, 1024, 1920]}
+          sizes="100vw"
+          quality={80}
+          loading="eager"
+          class="h-full w-full object-cover object-center"
+        />
+      </div>
+      <div class="relative z-10 mt-8 px-6 py-12 md:px-10">
+        <p
+          class="-mt-6 mb-10 pl-1 text-[2rem] font-semibold uppercase tracking-[0.15em] opacity-90"
+        >
+          Cie. Youkali
+        </p>
+        <h1
+          class="mb-4 text-[clamp(6rem,26vw,9rem)] font-bold leading-none tracking-[0.03em] [text-shadow:2px_4px_20px_rgba(0,0,0,0.5)]"
+        >
+          ON THE MOON
+        </h1>
+      </div>
+      <p
+        class="absolute bottom-2.5 right-2.5 z-20 m-0 max-w-[calc(100%-4rem)] text-xs opacity-60 md:max-w-none"
+      >
+        © David Schelker
+      </p>
+      <a
+        href="#about"
+        class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/70 transition hover:text-white hover:no-underline"
+        aria-label="Scroll down"
+      >
+        <svg
+          class="animate-bounce"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M7 13l5 5 5-5M7 6l5 5 5-5"></path>
+        </svg>
+      </a>
+    </section>
 
-		<!-- About Section -->
-		<section id="about" class="bg-zinc-950 py-16 md:py-24">
-			<div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
-				<p class="mb-8 text-[1.15rem] font-normal leading-[1.8] sm:text-[1.35rem]">
-					Umwoben von Geschichten, gehört er bisher nur den Träumenden und sich selbst. Doch was, wenn wieder Menschen auf dem Mond landen? Wenn der Mond erobert und dauerhaft bewohnt wird?
-				</p>
-				<p class="mb-6">
-					ON THE MOON beschäftigt sich mit Besitz, anhand des Umgangs von Menschen mit dem Mond. Drei Performer:innen und ein Musiker begeben sich auf eine bilderreiche Reise ins All und erforschen zwischen Fakten und Fantasie ungewöhnliche Zukunftsutopien. Mit Luftakrobatik, Physical Theatre und Live-Sound geht das Projekt innovative Wege im zeitgenössischen Zirkus: Es verbindet Wissenschaft mit Zirkus in weitgehendem Sinne und lädt das Publikum zu einer spielerischen Reise ein.
-				</p>
-				<p class="mb-6">
-					Im Frühjahr 2025 wurde das Projekt von Migros Kulturprozent für eine Ideationsphase unterstützt. Ab Juni 2026 startet die Stückkreation, in Koproduktion mit dem Zirkusquartier Zürich, begleitet von Wissenschaftler:innen der ETH Zürich und der Uni Bern.
-				</p>
-				<div class="mt-12 flex flex-col gap-4 pt-8 uppercase opacity-80 md:flex-row md:flex-wrap md:gap-6">
-					<span class="inline-flex items-center before:mr-3 before:inline-block before:size-1.5 before:rounded-full before:bg-[#9b59b6] before:content-['']">Ab 7 Jahren</span>
-					<span class="inline-flex items-center before:mr-3 before:inline-block before:size-1.5 before:rounded-full before:bg-[#9b59b6] before:content-['']">Dauer: ca. 60 Minuten</span>
-					<span class="inline-flex items-center before:mr-3 before:inline-block before:size-1.5 before:rounded-full before:bg-[#9b59b6] before:content-['']">Spielbar in Theatern und Turnhallen</span>
-				</div>
-			</div>
-		</section>
+    <!-- About Section -->
+    <section id="about" class="bg-zinc-950 py-16 md:py-24">
+      <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
+        <p
+          class="mb-8 text-[1.15rem] font-normal leading-[1.8] sm:text-[1.35rem]"
+        >
+          Umwoben von Geschichten, gehört er bisher nur den Träumenden und sich
+          selbst. Doch was, wenn wieder Menschen auf dem Mond landen? Wenn der
+          Mond erobert und dauerhaft bewohnt wird?
+        </p>
+        <p class="mb-6">
+          ON THE MOON beschäftigt sich mit Besitz, anhand des Umgangs von
+          Menschen mit dem Mond. Drei Performer:innen und ein Musiker begeben
+          sich auf eine bilderreiche Reise ins All und erforschen zwischen
+          Fakten und Fantasie ungewöhnliche Zukunftsutopien. Mit Luftakrobatik,
+          Physical Theatre und Live-Sound geht das Projekt innovative Wege im
+          zeitgenössischen Zirkus: Es verbindet Wissenschaft mit Zirkus in
+          weitgehendem Sinne und lädt das Publikum zu einer spielerischen Reise
+          ein.
+        </p>
+        <p class="mb-6">
+          Im Frühjahr 2025 wurde das Projekt von Migros Kulturprozent für eine
+          Ideationsphase unterstützt. Ab Juni 2026 startet die Stückkreation, in
+          Koproduktion mit dem Zirkusquartier Zürich, begleitet von
+          Wissenschaftler:innen der ETH Zürich und der Uni Bern.
+        </p>
+        <div
+          class="mt-12 flex flex-col gap-4 pt-8 uppercase opacity-80 md:flex-row md:flex-wrap md:gap-6"
+        >
+          <span
+            class="inline-flex items-center before:mr-3 before:inline-block before:size-1.5 before:rounded-full before:bg-[#9b59b6] before:content-['']"
+            >Ab 7 Jahren</span
+          >
+          <span
+            class="inline-flex items-center before:mr-3 before:inline-block before:size-1.5 before:rounded-full before:bg-[#9b59b6] before:content-['']"
+            >Dauer: ca. 60 Minuten</span
+          >
+          <span
+            class="inline-flex items-center before:mr-3 before:inline-block before:size-1.5 before:rounded-full before:bg-[#9b59b6] before:content-['']"
+            >Spielbar in Theatern und Turnhallen</span
+          >
+        </div>
+      </div>
+    </section>
 
-		<!-- Gallery Section -->
-		<section class="bg-zinc-950 py-10 md:py-14">
-			<Gallery />
-		</section>
+    <!-- Gallery Section -->
+    <section class="bg-zinc-950 py-10 md:py-14">
+      <Gallery />
+    </section>
 
-		<!-- Team Section -->
-		<section id="team" class="bg-[#111] py-16 md:py-[4.5rem]">
-			<div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
-				<h2 class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight">Mitwirkende</h2>
-				<div class="grid gap-6 md:gap-7">
-					<div class="grid gap-x-10 gap-y-6 md:grid-cols-2">
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Künstlerische Leitung, Produktionsleitung</span>
-							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.valeavolcker.com/aktuelles" target="_blank" rel="noopener">Valea Völcker</a></span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Künstlerische Assistenz</span>
-							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://simonthoeni.ch/" target="_blank" rel="noopener">Simon Thöni</a></span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Performance</span>
-							<span class="flex flex-col leading-[1.42]">
-								<span><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.valeavolcker.com/aktuelles" target="_blank" rel="noopener">Valea Völcker</a></span>
-								<span><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://simonthoeni.ch/" target="_blank" rel="noopener">Simon Thöni</a></span>
-							</span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Live-Musik & Foley</span>
-							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.marquismcgee.com/" target="_blank" rel="noopener">Marquis’ McGee</a></span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Choreografie</span>
-							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.dianegemsch.ch/" target="_blank" rel="noopener">Diane Gemsch</a></span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">End-Regie</span>
-							<span class="leading-[1.42]">Patrice Bussy</span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Tanz-Coaching & Projektmentoring</span>
-							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://bollwerk-andreaboll.com/" target="_blank" rel="noopener">Andrea Boll</a></span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Luftakrobatik Coaching</span>
-							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.rebekkagather.com/" target="_blank" rel="noopener">Rebekka Gather</a></span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Kostüme</span>
-							<span class="leading-[1.42]">Jope Schneider</span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Bühnenbild</span>
-							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://annatinahuwiler.ch/z-BERG" target="_blank" rel="noopener">Annatina Huwiler</a></span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Vermittlung</span>
-							<span class="leading-[1.42]">Mira Maeder</span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Wissenschaftliche Begleitung</span>
-							<span class="flex flex-col leading-[1.42]">
-								<span>Prof. Audrey Vorburger (Uni Bern)</span>
-								<span>Dr. Anna Mittelholz (ETH Zürich)</span>
-								<span>Prof. Dr. Henner Busemann (ETH Zürich)</span>
-							</span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Lichtkonzept</span>
-							<span class="leading-[1.42]">Zora Brändle</span>
-						</div>
-						<div class="flex flex-col gap-1 py-1">
-							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Rigging Beratung</span>
-							<span class="leading-[1.42]">Duncan Cown</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- Team Section -->
+    <section id="team" class="bg-[#111] py-16 md:py-[4.5rem]">
+      <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
+        <h2
+          class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
+        >
+          Mitwirkende
+        </h2>
+        <div class="grid gap-6 md:gap-7">
+          <div class="grid gap-x-10 gap-y-6 md:grid-cols-2">
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Künstlerische Leitung, Produktionsleitung</span
+              >
+              <span class="leading-[1.42]"
+                ><a
+                  class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                  href="https://www.valeavolcker.com/aktuelles"
+                  target="_blank"
+                  rel="noopener">Valea Völcker</a
+                ></span
+              >
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Künstlerische Assistenz</span
+              >
+              <span class="leading-[1.42]"
+                ><a
+                  class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                  href="https://simonthoeni.ch/"
+                  target="_blank"
+                  rel="noopener">Simon Thöni</a
+                ></span
+              >
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Performance</span
+              >
+              <span class="flex flex-col leading-[1.42]">
+                <span
+                  ><a
+                    class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                    href="https://www.valeavolcker.com/aktuelles"
+                    target="_blank"
+                    rel="noopener">Valea Völcker</a
+                  ></span
+                >
+                <span
+                  ><a
+                    class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                    href="https://simonthoeni.ch/"
+                    target="_blank"
+                    rel="noopener">Simon Thöni</a
+                  ></span
+                >
+              </span>
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Live-Musik & Foley</span
+              >
+              <span class="leading-[1.42]"
+                ><a
+                  class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                  href="https://www.marquismcgee.com/"
+                  target="_blank"
+                  rel="noopener">Marquis’ McGee</a
+                ></span
+              >
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Choreografie</span
+              >
+              <span class="leading-[1.42]"
+                ><a
+                  class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                  href="https://www.dianegemsch.ch/"
+                  target="_blank"
+                  rel="noopener">Diane Gemsch</a
+                ></span
+              >
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >End-Regie</span
+              >
+              <span class="leading-[1.42]">Patrice Bussy</span>
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Tanz-Coaching & Projektmentoring</span
+              >
+              <span class="leading-[1.42]"
+                ><a
+                  class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                  href="https://bollwerk-andreaboll.com/"
+                  target="_blank"
+                  rel="noopener">Andrea Boll</a
+                ></span
+              >
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Luftakrobatik Coaching</span
+              >
+              <span class="leading-[1.42]"
+                ><a
+                  class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                  href="https://www.rebekkagather.com/"
+                  target="_blank"
+                  rel="noopener">Rebekka Gather</a
+                ></span
+              >
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Kostüme</span
+              >
+              <span class="leading-[1.42]">Jope Schneider</span>
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Bühnenbild</span
+              >
+              <span class="leading-[1.42]"
+                ><a
+                  class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                  href="https://annatinahuwiler.ch/z-BERG"
+                  target="_blank"
+                  rel="noopener">Annatina Huwiler</a
+                ></span
+              >
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Vermittlung</span
+              >
+              <span class="leading-[1.42]">Mira Maeder</span>
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Wissenschaftliche Begleitung</span
+              >
+              <span class="flex flex-col leading-[1.42]">
+                <span>Prof. Audrey Vorburger (Uni Bern)</span>
+                <span>Dr. Anna Mittelholz (ETH Zürich)</span>
+                <span>Prof. Dr. Henner Busemann (ETH Zürich)</span>
+              </span>
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Lichtkonzept</span
+              >
+              <span class="leading-[1.42]">Zora Brändle</span>
+            </div>
+            <div class="flex flex-col gap-1 py-1">
+              <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+                >Rigging Beratung</span
+              >
+              <span class="leading-[1.42]">Duncan Cown</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<!-- Dates Section -->
-		<section id="dates" class="bg-zinc-950 py-16 md:py-24">
-			<div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
-				<h2 class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight">Daten 2026</h2>
-				<div class="flex flex-col gap-6">
-					<a href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25959" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
-						<span class="text-sm uppercase tracking-[0.015em] opacity-40">23. Oktober | 20:00</span>
-						<span class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]">Zirkusquartier Zürich</span>
-					</a>
-					<a href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25960" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
-						<span class="text-sm uppercase tracking-[0.015em] opacity-40">24. Oktober | 18:00</span>
-						<span class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]">ON THE MOON - Zirkusquartier</span>
-					</a>
-					<a href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25961" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
-						<span class="text-sm uppercase tracking-[0.015em] opacity-40">25. Oktober | 17:00</span>
-						<span class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]">ON THE MOON - Zirkusquartier</span>
-					</a>
-					<a href="https://www.schuleundkultur.zh.ch/veranstaltung/13564/on-the-moon" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
-						<span class="text-sm uppercase tracking-[0.015em] opacity-40">26./27. Oktober</span>
-						<span class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]">Zirkusquartier Zürich (Schulaufführungen)</span>
-					</a>
-				</div>
-			</div>
-		</section>
+    <!-- Dates Section -->
+    <section id="dates" class="bg-zinc-950 py-16 md:py-24">
+      <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
+        <h2
+          class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
+        >
+          Daten 2026
+        </h2>
+        <div class="flex flex-col gap-6">
+          <a
+            href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25959"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10"
+          >
+            <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+              >23. Oktober | 20:00</span
+            >
+            <span
+              class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]"
+              >ON THE MOON - Zirkusquartier Zürich (Premiere)</span
+            >
+          </a>
+          <a
+            href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25960"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10"
+          >
+            <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+              >24. Oktober | 18:00</span
+            >
+            <span
+              class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]"
+              >ON THE MOON - Zirkusquartier Zürich</span
+            >
+          </a>
+          <a
+            href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25961"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10"
+          >
+            <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+              >25. Oktober | 17:00</span
+            >
+            <span
+              class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]"
+              >ON THE MOON - Zirkusquartier Zürich</span
+            >
+          </a>
+          <a
+            href="https://www.schuleundkultur.zh.ch/veranstaltung/13564/on-the-moon"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10"
+          >
+            <span class="text-sm uppercase tracking-[0.015em] opacity-40"
+              >26./27. Oktober</span
+            >
+            <span
+              class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]"
+              >ON THE MOON - Zirkusquartier Zürich (Schulaufführungen)</span
+            >
+          </a>
+        </div>
+      </div>
+    </section>
 
-		<!-- Video Section -->
-		<section id="video" class="bg-[#111] py-16 md:py-24">
-			<div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
-				<h2 class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight">Teaser</h2>
-				<div class="relative aspect-video overflow-hidden rounded">
-					<iframe 
-						src="https://www.youtube-nocookie.com/embed/4iZVH2jsz0E?rel=0" 
-						title="ON THE MOON – Ideationsphase"
-						frameborder="0" 
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-						referrerpolicy="strict-origin-when-cross-origin"
-						allowfullscreen
-						loading="lazy"
-						class="absolute inset-0 h-full w-full"
-					></iframe>
-				</div>
-				<p class="mb-0 mt-4 text-sm opacity-60">© Michael Gärtner, Wetzikon TV</p>
-			</div>
-		</section>
+    <!-- Video Section -->
+    <section id="video" class="bg-[#111] py-16 md:py-24">
+      <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
+        <h2
+          class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
+        >
+          Teaser
+        </h2>
+        <div class="relative aspect-video overflow-hidden rounded">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/4iZVH2jsz0E?rel=0"
+            title="ON THE MOON – Ideationsphase"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy"
+            class="absolute inset-0 h-full w-full"></iframe>
+        </div>
+        <p class="mb-0 mt-4 text-sm opacity-60">
+          © Michael Gärtner, Wetzikon TV
+        </p>
+      </div>
+    </section>
 
-		<!-- Contact Section -->
-		<section id="contact" class="bg-zinc-950 py-16 md:py-24">
-			<div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
-				<h2 class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight">Kontakt</h2>
-				<div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-					<div>
-						<h3 class="mb-4 text-base uppercase tracking-[0.015em] opacity-40">Produktionsleitung</h3>
-						<p class="mb-2">Valea Völcker</p>
-						<p class="mb-2"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="mailto:info@valeavolcker.com">info@valeavolcker.com</a></p>
-					</div>
-					<div>
-						<h3 class="mb-4 text-base uppercase tracking-[0.015em] opacity-40">Verein Youkali – Cie. Youkali</h3>
-						<p class="mb-2">Morgenstrasse 30</p>
-						<p class="mb-2">8620 Wetzikon</p>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-zinc-950 py-16 md:py-24">
+      <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
+        <h2
+          class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
+        >
+          Kontakt
+        </h2>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
+          <div>
+            <h3 class="mb-4 text-base uppercase tracking-[0.015em] opacity-40">
+              Produktionsleitung
+            </h3>
+            <p class="mb-2">Valea Völcker</p>
+            <p class="mb-2">
+              <a
+                class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline"
+                href="mailto:info@valeavolcker.com">info@valeavolcker.com</a
+              >
+            </p>
+          </div>
+          <div>
+            <h3 class="mb-4 text-base uppercase tracking-[0.015em] opacity-40">
+              Verein Youkali – Cie. Youkali
+            </h3>
+            <p class="mb-2">Morgenstrasse 30</p>
+            <p class="mb-2">8620 Wetzikon</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<!-- Partners Section -->
-		<footer class="bg-[#111] py-16 text-center">
-			<div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
-				<div class="mb-12">
-					<p class="mb-8 text-sm uppercase tracking-[0.015em] opacity-40">In Zusammenarbeit mit</p>
-					<div class="flex flex-wrap items-center justify-center gap-10">
-						<a href="https://ethz.ch/" target="_blank" rel="noopener"><Image src={ethLogo} alt="ETH Zürich" class="h-20 w-auto opacity-80 transition duration-300 hover:scale-[1.08] hover:opacity-100" /></a>
-						<a href="https://www.unibe.ch/" target="_blank" rel="noopener"><Image src={uniBernLogo} alt="Universität Bern" class="h-20 w-auto opacity-80 transition duration-300 hover:scale-[1.08] hover:opacity-100" /></a>
-						<a href="https://swissspacemuseum.ch/" target="_blank" rel="noopener"><Image src={swissSpaceMuseumLogo} alt="Swiss Space Museum" class="h-20 w-auto opacity-80 transition duration-300 hover:scale-[1.08] hover:opacity-100 [filter:invert(1)_grayscale(1)] [mix-blend-mode:screen]" /></a>
-						<a href="https://zirkusquartier.ch/" target="_blank" rel="noopener"><Image src={zirkusQuartierLogo} alt="Zirkusquartier Zürich" class="h-20 w-auto opacity-80 transition duration-300 hover:scale-[1.08] hover:opacity-100 [filter:invert(1)_grayscale(1)] [mix-blend-mode:screen]" /></a>
-					</div>
-				</div>
-				<div>
-					<p class="mb-8 text-sm uppercase tracking-[0.015em] opacity-40">Unterstützt von</p>
-					<div class="grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
-						{supporterLogos.map((logo) => (
-							<div class="flex min-h-24 items-center justify-center">
-								<Image
-									src={logo.src}
-									alt={logo.alt}
-									class:list={['w-auto max-w-full object-contain opacity-80 transition duration-300 hover:scale-[1.06] hover:opacity-100', logo.size]}
-								/>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
-		</footer>
-	</body>
+    <!-- Partners Section -->
+    <footer class="bg-[#111] py-16 text-center">
+      <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
+        <div class="mb-12">
+          <p class="mb-8 text-sm uppercase tracking-[0.015em] opacity-40">
+            In Zusammenarbeit mit
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-10">
+            <a href="https://ethz.ch/" target="_blank" rel="noopener"
+              ><Image
+                src={ethLogo}
+                alt="ETH Zürich"
+                class="h-20 w-auto opacity-80 transition duration-300 hover:scale-[1.08] hover:opacity-100"
+              /></a
+            >
+            <a href="https://www.unibe.ch/" target="_blank" rel="noopener"
+              ><Image
+                src={uniBernLogo}
+                alt="Universität Bern"
+                class="h-20 w-auto opacity-80 transition duration-300 hover:scale-[1.08] hover:opacity-100"
+              /></a
+            >
+            <a
+              href="https://swissspacemuseum.ch/"
+              target="_blank"
+              rel="noopener"
+              ><Image
+                src={swissSpaceMuseumLogo}
+                alt="Swiss Space Museum"
+                class="h-20 w-auto opacity-80 transition duration-300 hover:scale-[1.08] hover:opacity-100 [filter:invert(1)_grayscale(1)] [mix-blend-mode:screen]"
+              /></a
+            >
+            <a href="https://zirkusquartier.ch/" target="_blank" rel="noopener"
+              ><Image
+                src={zirkusQuartierLogo}
+                alt="Zirkusquartier Zürich"
+                class="h-20 w-auto opacity-80 transition duration-300 hover:scale-[1.08] hover:opacity-100 [filter:invert(1)_grayscale(1)] [mix-blend-mode:screen]"
+              /></a
+            >
+          </div>
+        </div>
+        <div>
+          <p class="mb-8 text-sm uppercase tracking-[0.015em] opacity-40">
+            Unterstützt von
+          </p>
+          <div
+            class="grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4"
+          >
+            {
+              supporterLogos.map((logo) => (
+                <div class="flex min-h-24 items-center justify-center">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    class:list={[
+                      "w-auto max-w-full object-contain opacity-80 [filter:brightness(0)_invert(1)] transition duration-300 hover:scale-[1.06] hover:opacity-100",
+                      logo.size,
+                    ]}
+                  />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
