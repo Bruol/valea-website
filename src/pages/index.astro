@@ -7,7 +7,23 @@ import ethLogo from '../assets/eth_logo_kurz_neg.webp';
 import uniBernLogo from '../assets/uni bern logo.webp';
 import swissSpaceMuseumLogo from '../assets/swiss space museum logo.webp';
 import zirkusQuartierLogo from '../assets/zirkus quartier logo.webp';
-import kukoLogo from '../assets/KuKo Logo.webp';
+import ernstGoehnerStiftungLogo from '../assets/supporters/ernst-goehner-stiftung.webp';
+import kantonZuerichSwisslosLogo from '../assets/supporters/kanton-zuerich-swisslos.webp';
+import kulturkommissionWetzikonLogo from '../assets/supporters/kulturkommission-wetzikon.webp';
+import migrosKulturprozentLogo from '../assets/supporters/migros-kulturprozent.webp';
+import ssaLogo from '../assets/supporters/ssa.webp';
+import stadtZuerichKulturLogo from '../assets/supporters/stadt-zuerich-kultur.webp';
+import stiftungAnneMarieSchindlerLogo from '../assets/supporters/stiftung-anne-marie-schindler.webp';
+
+const supporterLogos = [
+	{ src: ernstGoehnerStiftungLogo, alt: 'Ernst Göhner Stiftung', size: 'h-14 sm:h-16' },
+	{ src: migrosKulturprozentLogo, alt: 'Migros Kulturprozent', size: 'h-12 sm:h-14' },
+	{ src: kantonZuerichSwisslosLogo, alt: 'Kanton Zürich Kulturförderung und Swisslos', size: 'h-11 sm:h-12' },
+	{ src: stadtZuerichKulturLogo, alt: 'Stadt Zürich Kultur', size: 'h-12 sm:h-14' },
+	{ src: ssaLogo, alt: 'Société Suisse des Auteurs', size: 'h-14 sm:h-16' },
+	{ src: stiftungAnneMarieSchindlerLogo, alt: 'Stiftung Anne-Marie Schindler', size: 'h-20' },
+	{ src: kulturkommissionWetzikonLogo, alt: 'Kulturkommission Wetzikon', size: 'h-14 sm:h-16' },
+];
 ---
 
 <html lang="de" class="scroll-smooth">
@@ -77,61 +93,72 @@ import kukoLogo from '../assets/KuKo Logo.webp';
 			<div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
 				<h2 class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight">Mitwirkende</h2>
 				<div class="grid gap-6 md:gap-7">
-
-						<div class="grid gap-3">
-							<div class="flex flex-col gap-1 py-1">
-								<span class="text-sm uppercase tracking-[0.015em] opacity-40">Künstlerische Leitung, Produktionsleitung</span>
-								<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.valeavolcker.com/aktuelles" target="_blank" rel="noopener">Valea Völcker</a></span>
-							</div>
-							<div class="flex flex-col gap-1 py-1">
-								<span class="text-sm uppercase tracking-[0.015em] opacity-40">Idee & Performance</span>
-								<span class="leading-[1.42]">
-									Valea Völcker,
-									<a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://simonthoeni.ch/" target="_blank" rel="noopener">Simon Thöni</a>,
-									<a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.dianegemsch.ch/" target="_blank" rel="noopener">Diane Gemsch</a>
-								</span>
-							</div>
-							<div class="flex flex-col gap-1 py-1">
-								<span class="text-sm uppercase tracking-[0.015em] opacity-40">Sound & Performance</span>
-								<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.marquismcgee.com/" target="_blank" rel="noopener">Marquis' McGee</a></span>
-							</div>
-							<div class="flex flex-col gap-1 py-1">
-								<span class="text-sm uppercase tracking-[0.015em] opacity-40">End-Regie</span>
-								<span class="leading-[1.42]">Newa Grawit (<a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://cirquedeloin.ch/companie/" target="_blank" rel="noopener">Cirque de Loin</a>)</span>
-							</div>
-
-
-
-							<div class="flex flex-col gap-1 py-1">
-								<span class="text-sm uppercase tracking-[0.015em] opacity-40">Wissenschaftliche Begleitung</span>
-								<span class="leading-[1.42]">Prof. Audrey Vorburger (Uni Bern), Dr. Anna Mittelholz (ETH Zürich), Prof. Dr. Henner Busemann (ETH Zürich)</span>
-							</div>
-				
-
-							<div class="flex flex-col gap-1 py-1">
-								<span class="text-sm uppercase tracking-[0.015em] opacity-40">Bühnenbild</span>
-								<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://annatinahuwiler.ch/z-BERG" target="_blank" rel="noopener">Annatina Huwiler</a></span>
-							</div>
-							<div class="flex flex-col gap-1 py-1">
-								<span class="text-sm uppercase tracking-[0.015em] opacity-40">Produktions-Mentoring</span>
-								<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://bollwerk-andreaboll.com/" target="_blank" rel="noopener">Andrea Boll</a></span>
-							</div>
-							<div class="flex flex-col gap-1 py-1">
-								<span class="text-sm uppercase tracking-[0.015em] opacity-40">Luftakrobatik Coaching</span>
-								<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.rebekkagather.com/" target="_blank" rel="noopener">Rebekka Gather</a></span>
-							</div>
-							<div class="flex flex-col gap-1 py-1">
-								<span class="text-sm uppercase tracking-[0.015em] opacity-40">Rigging Beratung</span>
-								<span class="leading-[1.42]">Duncan Cown</span>
-							</div>
-
-
-
-
-							
+					<div class="grid gap-x-10 gap-y-6 md:grid-cols-2">
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Künstlerische Leitung, Produktionsleitung</span>
+							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.valeavolcker.com/aktuelles" target="_blank" rel="noopener">Valea Völcker</a></span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Künstlerische Assistenz</span>
+							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://simonthoeni.ch/" target="_blank" rel="noopener">Simon Thöni</a></span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Performance</span>
+							<span class="flex flex-col leading-[1.42]">
+								<span><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.valeavolcker.com/aktuelles" target="_blank" rel="noopener">Valea Völcker</a></span>
+								<span><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://simonthoeni.ch/" target="_blank" rel="noopener">Simon Thöni</a></span>
+							</span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Live-Musik & Foley</span>
+							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.marquismcgee.com/" target="_blank" rel="noopener">Marquis’ McGee</a></span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Choreografie</span>
+							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.dianegemsch.ch/" target="_blank" rel="noopener">Diane Gemsch</a></span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">End-Regie</span>
+							<span class="leading-[1.42]">Patrice Bussy</span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Tanz-Coaching & Projektmentoring</span>
+							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://bollwerk-andreaboll.com/" target="_blank" rel="noopener">Andrea Boll</a></span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Luftakrobatik Coaching</span>
+							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://www.rebekkagather.com/" target="_blank" rel="noopener">Rebekka Gather</a></span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Kostüme</span>
+							<span class="leading-[1.42]">Jope Schneider</span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Bühnenbild</span>
+							<span class="leading-[1.42]"><a class="border-b border-white/30 text-zinc-200 transition hover:border-white hover:text-white hover:no-underline" href="https://annatinahuwiler.ch/z-BERG" target="_blank" rel="noopener">Annatina Huwiler</a></span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Vermittlung</span>
+							<span class="leading-[1.42]">Mira Maeder</span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Wissenschaftliche Begleitung</span>
+							<span class="flex flex-col leading-[1.42]">
+								<span>Prof. Audrey Vorburger (Uni Bern)</span>
+								<span>Dr. Anna Mittelholz (ETH Zürich)</span>
+								<span>Prof. Dr. Henner Busemann (ETH Zürich)</span>
+							</span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Lichtkonzept</span>
+							<span class="leading-[1.42]">Zora Brändle</span>
+						</div>
+						<div class="flex flex-col gap-1 py-1">
+							<span class="text-sm uppercase tracking-[0.015em] opacity-40">Rigging Beratung</span>
+							<span class="leading-[1.42]">Duncan Cown</span>
 						</div>
 					</div>
-
+				</div>
 			</div>
 		</section>
 
@@ -140,21 +167,21 @@ import kukoLogo from '../assets/KuKo Logo.webp';
 			<div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
 				<h2 class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight">Daten 2026</h2>
 				<div class="flex flex-col gap-6">
-					<a href="https://zeughaus-areal.ch/kulturmaerz-2026/" target="_blank" rel="noopener noreferrer" class="flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
-						<span class="text-sm uppercase tracking-[0.015em] opacity-40">16.-19. März</span>
-						<span class=" text-[1.15rem] font-normal sm:text-[1.35rem]">Workshops mit Schulklassen, Kulturmärz Uster</span>
+					<a href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25959" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
+						<span class="text-sm uppercase tracking-[0.015em] opacity-40">23. Oktober | 20:00</span>
+						<span class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]">Zirkusquartier Zürich</span>
 					</a>
-					<a href="https://swissspacemuseum.ch/events/" target="_blank" rel="noopener noreferrer" class="flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
-						<span class="text-sm uppercase tracking-[0.015em] opacity-40">27. September</span>
-						<span class="text-[1.15rem] font-normal sm:text-[1.35rem]">Podiumsdiskussion, Swiss Space Museum Regensdorf</span>
+					<a href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25960" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
+						<span class="text-sm uppercase tracking-[0.015em] opacity-40">24. Oktober | 18:00</span>
+						<span class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]">ON THE MOON - Zirkusquartier</span>
 					</a>
-					<a href="https://zirkusquartier.ch/programm/" target="_blank" rel="noopener noreferrer" class="flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
-						<span class="text-sm uppercase tracking-[0.015em] opacity-40">23. Oktober</span>
-						<span class="text-[1.15rem] font-normal sm:text-[1.35rem]">PREMIERE, Zirkusquartier Zürich</span>
+					<a href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25961" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
+						<span class="text-sm uppercase tracking-[0.015em] opacity-40">25. Oktober | 17:00</span>
+						<span class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]">ON THE MOON - Zirkusquartier</span>
 					</a>
-					<a href="https://zirkusquartier.ch/programm/" target="_blank" rel="noopener noreferrer" class="flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
-						<span class="text-sm uppercase tracking-[0.015em] opacity-40">24./25. Oktober</span>
-						<span class="text-[1.15rem] font-normal sm:text-[1.35rem]">Zirkusquartier Zürich</span>
+					<a href="https://www.schuleundkultur.zh.ch/veranstaltung/13564/on-the-moon" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
+						<span class="text-sm uppercase tracking-[0.015em] opacity-40">26./27. Oktober</span>
+						<span class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]">Zirkusquartier Zürich (Schulaufführungen)</span>
 					</a>
 				</div>
 			</div>
@@ -213,8 +240,16 @@ import kukoLogo from '../assets/KuKo Logo.webp';
 				</div>
 				<div>
 					<p class="mb-8 text-sm uppercase tracking-[0.015em] opacity-40">Unterstützt von</p>
-					<div class="flex flex-wrap items-center justify-center gap-10">
-						<Image src={kukoLogo} alt="Kultur Kommission Wetzikon" class="h-20 w-auto opacity-80 transition duration-300 hover:scale-[1.08] hover:opacity-100 [filter:invert(1)_grayscale(1)] [mix-blend-mode:screen]" />
+					<div class="grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
+						{supporterLogos.map((logo) => (
+							<div class="flex min-h-24 items-center justify-center">
+								<Image
+									src={logo.src}
+									alt={logo.alt}
+									class:list={['w-auto max-w-full object-contain opacity-80 transition duration-300 hover:scale-[1.06] hover:opacity-100', logo.size]}
+								/>
+							</div>
+						))}
 					</div>
 				</div>
 			</div>
