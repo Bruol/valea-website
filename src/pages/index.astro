@@ -228,11 +228,11 @@ const structuredData = {
       set:html={JSON.stringify(structuredData)}
     />
   </head>
-  <body class="bg-zinc-950 font-sans leading-relaxed text-zinc-100 antialiased">
+  <body class="poster-site bg-zinc-950 font-sans leading-relaxed text-zinc-100 antialiased">
     <!-- Hero Section -->
-    <section class="relative flex min-h-screen items-start overflow-hidden">
+    <section class="poster-hero relative flex min-h-screen items-start overflow-hidden">
       <div
-        class="absolute inset-0 z-0 after:absolute after:inset-0 after:bg-gradient-to-b after:from-black/30 after:via-black/10 after:to-black/60 after:content-['']"
+        class="poster-hero-image absolute inset-0 z-0 after:absolute after:inset-0 after:content-['']"
       >
         <Image
           src={heroImageWebp}
@@ -244,17 +244,21 @@ const structuredData = {
           class="h-full w-full object-cover object-center"
         />
       </div>
-      <div class="relative z-10 mt-8 px-6 py-12 md:px-10">
+      <div class="poster-ribbon" aria-hidden="true"></div>
+      <div class="poster-stars" aria-hidden="true"></div>
+      <div class="poster-hero-copy relative z-10 mt-8 px-6 py-12 md:px-10">
         <p
-          class="-mt-6 mb-10 pl-1 text-[2rem] font-semibold uppercase tracking-[0.15em] opacity-90"
+          class="poster-kicker -mt-6 mb-10 pl-1 text-[2rem] font-semibold uppercase tracking-[0.15em]"
         >
           Cie. Youkali
         </p>
         <h1
-          class="mb-4 text-[clamp(6rem,26vw,9rem)] font-bold leading-none tracking-[0.03em] [text-shadow:2px_4px_20px_rgba(0,0,0,0.5)]"
+          class="poster-title mb-4 text-[clamp(5rem,24vw,11rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.04em]"
         >
-          ON THE MOON
+          <span>ON THE</span>
+          <span>MOON</span>
         </h1>
+        <p class="poster-subtitle">Tanz- &amp; Zirkusperformance für alle ab 6 Jahren</p>
       </div>
       <p
         class="absolute bottom-2.5 right-2.5 z-20 m-0 max-w-[calc(100%-4rem)] text-xs opacity-60 md:max-w-none"
@@ -281,7 +285,7 @@ const structuredData = {
     </section>
 
     <!-- About Section -->
-    <section id="about" class="bg-zinc-950 py-16 md:py-24">
+    <section id="about" class="poster-section poster-section-paper py-16 md:py-24">
       <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
         <p
           class="mb-8 text-[1.15rem] font-normal leading-[1.8] sm:text-[1.35rem]"
@@ -326,12 +330,12 @@ const structuredData = {
     </section>
 
     <!-- Gallery Section -->
-    <section class="bg-zinc-950 py-10 md:py-14">
+    <section class="poster-section poster-gallery py-10 md:py-14">
       <Gallery />
     </section>
 
     <!-- Dates Section -->
-    <section id="dates" class="bg-zinc-950 py-16 md:py-24">
+    <section id="dates" class="poster-section poster-section-ink py-16 md:py-24">
       <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
         <h2
           class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
@@ -341,7 +345,7 @@ const structuredData = {
         <div class="flex flex-col gap-6">
           {
             performanceDates.map((performance) => (
-              <article class="border-l-[3px] border-transparent bg-white/[0.03] p-6 transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
+              <article class="poster-date-card border-l-[3px] p-6 transition">
                 <div class="flex flex-wrap items-center justify-between gap-3">
                   <time class="text-sm uppercase tracking-[0.015em] opacity-50">
                     {performance.date}
@@ -351,13 +355,13 @@ const structuredData = {
                       href={performance.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex min-h-10 items-center justify-center rounded-full border border-[#9b59b6] px-5 py-2 text-sm font-semibold uppercase tracking-[0.06em] text-white no-underline transition hover:bg-[#9b59b6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b978d4]"
+                      class="poster-button inline-flex min-h-10 items-center justify-center px-5 py-2 text-sm font-extrabold uppercase tracking-[0.06em] no-underline transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
                     >
                       {performance.buttonLabel}
                     </a>
                   )}
                   {performance.ticketStatus && (
-                    <span class="inline-flex min-h-10 items-center rounded-full border border-white/15 px-5 py-2 text-sm font-medium uppercase tracking-[0.04em] text-white/55">
+                    <span class="poster-status inline-flex min-h-10 items-center px-5 py-2 text-sm font-bold uppercase tracking-[0.04em]">
                       {performance.ticketStatus}
                     </span>
                   )}
@@ -373,7 +377,7 @@ const structuredData = {
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="bg-[#111] py-16 md:py-[4.5rem]">
+    <section id="team" class="poster-section poster-section-coral py-16 md:py-[4.5rem]">
       <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
         <h2
           class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
@@ -542,14 +546,14 @@ const structuredData = {
     </section>
 
     <!-- Video Section -->
-    <section id="video" class="bg-[#111] py-16 md:py-24">
+    <section id="video" class="poster-section poster-section-blue py-16 md:py-24">
       <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
         <h2
           class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
         >
           Teaser
         </h2>
-        <div class="relative aspect-video overflow-hidden rounded">
+        <div class="poster-video relative aspect-video overflow-hidden">
           <iframe
             src="https://www.youtube-nocookie.com/embed/4iZVH2jsz0E?rel=0"
             title="ON THE MOON – Ideationsphase"
@@ -567,7 +571,7 @@ const structuredData = {
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-zinc-950 py-16 md:py-24">
+    <section id="contact" class="poster-section poster-section-paper py-16 md:py-24">
       <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
         <h2
           class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
@@ -599,7 +603,7 @@ const structuredData = {
     </section>
 
     <!-- Partners Section -->
-    <footer class="bg-[#111] py-16 text-center">
+    <footer class="poster-footer py-16 text-center">
       <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
         <div class="mb-12">
           <p class="mb-8 text-sm uppercase tracking-[0.015em] opacity-40">

@@ -37,3 +37,264 @@
     "Arial",
     sans-serif;
 }
+
+:root {
+  --poster-ink: #0a1424;
+  --poster-night: #122b56;
+  --poster-blue: #4656a6;
+  --poster-coral: #ee704c;
+  --poster-gold: #f2cf72;
+  --poster-paper: #f5f1e7;
+}
+
+.poster-site {
+  background: var(--poster-ink);
+  color: var(--poster-paper);
+}
+
+.poster-hero {
+  background: var(--poster-night);
+  isolation: isolate;
+}
+
+.poster-hero-image img {
+  filter: saturate(0.55) contrast(1.14) sepia(0.08);
+}
+
+.poster-hero-image::after {
+  background:
+    linear-gradient(90deg, rgba(10, 20, 36, 0.92) 0%, rgba(10, 20, 36, 0.64) 48%, rgba(10, 20, 36, 0.2) 100%),
+    linear-gradient(0deg, rgba(10, 20, 36, 0.88) 0%, transparent 45%);
+  mix-blend-mode: multiply;
+}
+
+.poster-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.75;
+  background-image:
+    radial-gradient(circle at 12% 17%, white 0 1.5px, transparent 2px),
+    radial-gradient(circle at 67% 23%, white 0 1px, transparent 1.7px),
+    radial-gradient(circle at 83% 71%, white 0 1.4px, transparent 2px),
+    radial-gradient(circle at 28% 79%, white 0 1px, transparent 1.8px);
+  background-size: 118px 137px, 169px 151px, 203px 181px, 149px 173px;
+}
+
+.poster-ribbon {
+  position: absolute;
+  z-index: 2;
+  top: 8%;
+  right: -9%;
+  width: min(66vw, 900px);
+  height: 26%;
+  rotate: -8deg;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--poster-coral) 0 16%,
+    var(--poster-gold) 16% 32%,
+    var(--poster-blue) 32% 48%
+  );
+  border: 3px solid var(--poster-ink);
+  border-radius: 48% 14% 56% 18% / 48% 60% 42% 56%;
+  box-shadow: 0 6px 0 rgba(10, 20, 36, 0.5);
+  clip-path: polygon(0 20%, 100% 0, 96% 72%, 4% 100%);
+  opacity: 0.94;
+}
+
+.poster-hero-copy {
+  max-width: 1000px;
+}
+
+.poster-kicker {
+  color: var(--poster-gold);
+  text-shadow: 2px 2px 0 var(--poster-ink);
+}
+
+.poster-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--poster-paper);
+  filter: drop-shadow(6px 8px 0 var(--poster-ink));
+  -webkit-text-stroke: 3px var(--poster-ink);
+  transform: rotate(-2deg) skewY(-2deg);
+}
+
+.poster-title span:last-child {
+  margin-left: clamp(2rem, 11vw, 8rem);
+  color: var(--poster-gold);
+}
+
+.poster-subtitle {
+  display: inline-block;
+  max-width: 34rem;
+  margin-top: 2rem;
+  padding: 0.8rem 1.1rem;
+  background: var(--poster-coral);
+  border: 2px solid var(--poster-ink);
+  color: var(--poster-ink);
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.035em;
+  transform: rotate(1.5deg);
+  box-shadow: 5px 5px 0 var(--poster-ink);
+}
+
+.poster-section {
+  position: relative;
+}
+
+.poster-section h2 {
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: -0.045em;
+  transform: rotate(-1deg);
+  text-shadow: 3px 3px 0 rgba(10, 20, 36, 0.35);
+}
+
+.poster-section-paper {
+  background-color: var(--poster-paper) !important;
+  color: var(--poster-ink);
+  background-image: repeating-linear-gradient(173deg, transparent 0 42px, rgba(10, 20, 36, 0.025) 43px 44px);
+}
+
+.poster-section-paper a {
+  color: var(--poster-ink) !important;
+  border-color: rgba(10, 20, 36, 0.35) !important;
+}
+
+.poster-section-paper [class*="before:bg-"]::before {
+  background: var(--poster-coral) !important;
+}
+
+.poster-section-ink,
+.poster-gallery {
+  background-color: var(--poster-ink) !important;
+  background-image: radial-gradient(rgba(245, 241, 231, 0.45) 0.8px, transparent 0.9px);
+  background-size: 33px 29px;
+}
+
+.poster-gallery img {
+  border: 3px solid var(--poster-paper);
+  border-radius: 0.2rem !important;
+  box-shadow: 8px 9px 0 var(--poster-coral);
+}
+
+.poster-date-card {
+  border: 2px solid var(--poster-paper);
+  border-left: 8px solid var(--poster-coral) !important;
+  background: rgba(18, 43, 86, 0.82);
+  box-shadow: 5px 6px 0 var(--poster-blue);
+}
+
+.poster-date-card:nth-child(3n + 2) {
+  border-left-color: var(--poster-gold) !important;
+  transform: rotate(0.25deg);
+}
+
+.poster-date-card:nth-child(3n) {
+  border-left-color: var(--poster-blue) !important;
+  transform: rotate(-0.2deg);
+}
+
+.poster-date-card:hover {
+  background: #193866;
+  transform: translate(-2px, -2px) rotate(0deg);
+  box-shadow: 8px 9px 0 var(--poster-coral);
+}
+
+.poster-button {
+  border: 2px solid var(--poster-ink);
+  border-radius: 0.2rem;
+  background: var(--poster-gold);
+  color: var(--poster-ink);
+  box-shadow: 3px 3px 0 var(--poster-coral);
+  transform: rotate(-1deg);
+}
+
+.poster-button:hover {
+  background: var(--poster-coral);
+  box-shadow: 4px 4px 0 var(--poster-gold);
+  transform: translate(-1px, -1px) rotate(1deg);
+}
+
+.poster-button:focus-visible {
+  outline-color: var(--poster-gold);
+}
+
+.poster-status {
+  border: 2px dashed rgba(245, 241, 231, 0.45);
+  border-radius: 0.2rem;
+  color: rgba(245, 241, 231, 0.72);
+  transform: rotate(1deg);
+}
+
+.poster-section-coral {
+  background: var(--poster-coral) !important;
+  color: var(--poster-ink);
+}
+
+.poster-section-coral a {
+  color: var(--poster-ink) !important;
+  border-color: rgba(10, 20, 36, 0.45) !important;
+}
+
+.poster-section-coral [class*="opacity-40"] {
+  opacity: 0.62;
+}
+
+.poster-section-blue {
+  background: var(--poster-blue) !important;
+  color: var(--poster-paper);
+}
+
+.poster-video {
+  border: 3px solid var(--poster-paper);
+  border-radius: 0.25rem;
+  box-shadow: 10px 11px 0 var(--poster-coral);
+  transform: rotate(-0.4deg);
+}
+
+.poster-footer {
+  background: var(--poster-ink) !important;
+  border-top: 12px solid var(--poster-gold);
+}
+
+@media (max-width: 640px) {
+  .poster-ribbon {
+    top: 10%;
+    right: -40%;
+    width: 112vw;
+    height: 18%;
+  }
+
+  .poster-title {
+    margin-top: 5rem;
+    -webkit-text-stroke-width: 2px;
+  }
+
+  .poster-title span:last-child {
+    margin-left: 1rem;
+  }
+
+  .poster-subtitle {
+    max-width: 18rem;
+  }
+
+  .poster-date-card,
+  .poster-date-card:nth-child(3n + 2),
+  .poster-date-card:nth-child(3n) {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poster-date-card,
+  .poster-button {
+    transition: none;
+  }
+}
