@@ -49,6 +49,60 @@ const supporterLogos = [
   },
 ];
 
+const performanceDates = [
+  {
+    date: "27. September 2026",
+    title: "Podiumsdiskussion, Swiss Space Museum Regensdorf",
+    url: "https://swissspacemuseum.ch/events/",
+    buttonLabel: "Mehr Infos",
+  },
+  {
+    date: "23. Oktober 2026 | 20:00",
+    title: "ON THE MOON - Zirkusquartier Zürich (Premiere)",
+    url: "https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25959",
+    buttonLabel: "Tickets",
+  },
+  {
+    date: "24. Oktober 2026 | 18:00",
+    title: "ON THE MOON - Zirkusquartier Zürich",
+    url: "https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25960",
+    buttonLabel: "Tickets",
+  },
+  {
+    date: "25. Oktober 2026 | 17:00",
+    title: "ON THE MOON - Zirkusquartier Zürich",
+    url: "https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25961",
+    buttonLabel: "Tickets",
+  },
+  {
+    date: "26./27. Oktober 2026",
+    title: "ON THE MOON - Zirkusquartier Zürich (Schulaufführungen)",
+  },
+  {
+    date: "7./8. November 2026",
+    title: "Zirkusquartier Zürich (Brücki 235 Aufführungsfenster)",
+    url: "https://bruecki235.ch/agenda/auffuehrungsfenster13-zq",
+    buttonLabel: "Tickets",
+  },
+  {
+    date: "10. Januar 2027 | 10:00",
+    title: "Südpol Luzern",
+    url: "https://www.sudpol.ch/",
+    buttonLabel: "Tickets",
+  },
+  {
+    date: "17. März 2027 | 15:00",
+    title: "Kulturmärz Wetzikon",
+    ticketStatus: "Tickets bald",
+  },
+  {
+    date: "5. Mai 2027",
+    title: "Kulturstunde Basel (Schulaufführung)",
+    url: "https://www.kulturstunde.ch/",
+    buttonLabel: "Mehr Infos",
+  },
+];
+
 const siteUrl = "https://youkali.ch/";
 const pageTitle =
   "ON THE MOON – Zeitgenössischer Zirkus für junges Publikum | Cie. Youkali";
@@ -257,7 +311,7 @@ const structuredData = {
         >
           <span
             class="inline-flex items-center before:mr-3 before:inline-block before:size-1.5 before:rounded-full before:bg-[#9b59b6] before:content-['']"
-            >Ab 7 Jahren</span
+            >Ab 6 Jahren</span
           >
           <span
             class="inline-flex items-center before:mr-3 before:inline-block before:size-1.5 before:rounded-full before:bg-[#9b59b6] before:content-['']"
@@ -274,6 +328,48 @@ const structuredData = {
     <!-- Gallery Section -->
     <section class="bg-zinc-950 py-10 md:py-14">
       <Gallery />
+    </section>
+
+    <!-- Dates Section -->
+    <section id="dates" class="bg-zinc-950 py-16 md:py-24">
+      <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
+        <h2
+          class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
+        >
+          Daten
+        </h2>
+        <div class="flex flex-col gap-6">
+          {
+            performanceDates.map((performance) => (
+              <article class="border-l-[3px] border-transparent bg-white/[0.03] p-6 transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <time class="text-sm uppercase tracking-[0.015em] opacity-50">
+                    {performance.date}
+                  </time>
+                  {performance.url && (
+                    <a
+                      href={performance.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex min-h-10 items-center justify-center rounded-full border border-[#9b59b6] px-5 py-2 text-sm font-semibold uppercase tracking-[0.06em] text-white no-underline transition hover:bg-[#9b59b6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b978d4]"
+                    >
+                      {performance.buttonLabel}
+                    </a>
+                  )}
+                  {performance.ticketStatus && (
+                    <span class="inline-flex min-h-10 items-center rounded-full border border-white/15 px-5 py-2 text-sm font-medium uppercase tracking-[0.04em] text-white/55">
+                      {performance.ticketStatus}
+                    </span>
+                  )}
+                </div>
+                <p class="mb-0 mt-3 text-[1.15rem] font-normal leading-snug sm:text-[1.35rem]">
+                  {performance.title}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
     </section>
 
     <!-- Team Section -->
@@ -441,89 +537,6 @@ const structuredData = {
               <span class="leading-[1.42]">Duncan Cown</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Dates Section -->
-    <section id="dates" class="bg-zinc-950 py-16 md:py-24">
-      <div class="mx-auto w-full max-w-[900px] px-6 md:px-8">
-        <h2
-          class="mb-8 text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-tight"
-        >
-          Daten 2026
-        </h2>
-        <div class="flex flex-col gap-6">
-          <a
-            href="https://swissspacemuseum.ch/events/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10"
-          >
-            <span class="text-sm uppercase tracking-[0.015em] opacity-40"
-              >27. September</span
-            >
-            <span
-              class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]"
-              >Podiumsdiskussion, Swiss Space Museum Regensdorf</span
-            >
-          </a>
-          <a
-            href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25959"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10"
-          >
-            <span class="text-sm uppercase tracking-[0.015em] opacity-40"
-              >23. Oktober | 20:00</span
-            >
-            <span
-              class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]"
-              >ON THE MOON - Zirkusquartier Zürich (Premiere)</span
-            >
-          </a>
-          <a
-            href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25960"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10"
-          >
-            <span class="text-sm uppercase tracking-[0.015em] opacity-40"
-              >24. Oktober | 18:00</span
-            >
-            <span
-              class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]"
-              >ON THE MOON - Zirkusquartier Zürich</span
-            >
-          </a>
-          <a
-            href="https://zirkusquartier.ch/veranstaltungen/on-the-moon/?vorstellung=25961"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10"
-          >
-            <span class="text-sm uppercase tracking-[0.015em] opacity-40"
-              >25. Oktober | 17:00</span
-            >
-            <span
-              class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]"
-              >ON THE MOON - Zirkusquartier Zürich</span
-            >
-          </a>
-          <a
-            href="https://www.schuleundkultur.zh.ch/veranstaltung/13564/on-the-moon"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex flex-col gap-1 border-l-[3px] border-transparent bg-white/[0.03] p-6 no-underline transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10"
-          >
-            <span class="text-sm uppercase tracking-[0.015em] opacity-40"
-              >26./27. Oktober</span
-            >
-            <span
-              class="text-[1.15rem] font-normal underline decoration-white/30 underline-offset-4 group-hover:decoration-white sm:text-[1.35rem]"
-              >ON THE MOON - Zirkusquartier Zürich (Schulaufführungen)</span
-            >
-          </a>
         </div>
       </div>
     </section>
