@@ -343,30 +343,29 @@ const structuredData = {
         <div class="flex flex-col gap-6">
           {
             performanceDates.map((performance) => (
-              <article class="border-l-[3px] border-transparent bg-white/[0.03] p-6 transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10">
-                <div class="flex flex-wrap items-center justify-between gap-3">
-                  <time class="text-sm uppercase tracking-[0.015em] opacity-50">
-                    {performance.date}
-                  </time>
-                  {performance.url && (
-                    <a
-                      href={performance.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex min-h-10 items-center justify-center rounded-full border border-[#9b59b6] px-5 py-2 text-sm font-semibold uppercase tracking-[0.06em] text-white no-underline transition hover:bg-[#9b59b6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b978d4]"
-                    >
-                      {performance.buttonLabel}
-                    </a>
-                  )}
-                  {performance.ticketStatus && (
-                    <span class="inline-flex min-h-10 items-center rounded-full border border-white/15 px-5 py-2 text-sm font-medium uppercase tracking-[0.04em] text-white/55">
-                      {performance.ticketStatus}
-                    </span>
-                  )}
-                </div>
-                <p class="mb-0 mt-3 text-[1.15rem] font-normal leading-snug sm:text-[1.35rem]">
+              <article class="border-l-[3px] border-transparent bg-white/[0.03] p-6 transition hover:border-[#9b59b6] hover:bg-[#9b59b6]/10 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start sm:gap-x-6">
+                <time class="block text-sm uppercase tracking-[0.015em] opacity-50 sm:col-start-1 sm:row-start-1 sm:self-center">
+                  {performance.date}
+                </time>
+                <p class="mb-0 mt-3 text-[1.15rem] font-normal leading-snug sm:col-span-2 sm:row-start-2 sm:text-[1.35rem]">
                   {performance.title}
                 </p>
+                {performance.url && (
+                  <a
+                    href={performance.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-6 inline-flex min-h-11 items-center justify-center rounded-full border border-[#9b59b6] px-6 py-2 text-sm font-semibold uppercase tracking-[0.06em] text-white no-underline transition hover:bg-[#9b59b6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b978d4] sm:col-start-2 sm:row-start-1 sm:mt-0"
+                    aria-label={`${performance.buttonLabel}: ${performance.title} (öffnet in neuem Tab)`}
+                  >
+                    {performance.buttonLabel}
+                  </a>
+                )}
+                {performance.ticketStatus && (
+                  <span class="mt-6 inline-flex min-h-11 items-center justify-center rounded-full border border-white/15 px-6 py-2 text-sm font-medium uppercase tracking-[0.04em] text-white/55 sm:col-start-2 sm:row-start-1 sm:mt-0">
+                    {performance.ticketStatus}
+                  </span>
+                )}
               </article>
             ))
           }
