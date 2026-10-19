@@ -5,9 +5,11 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
   const delays = new Map<Element, number>();
   const animations = new Set<Animation>();
 
-  document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((element) => {
-    delays.set(element, Number(element.dataset.revealDelay) || 0);
-  });
+  document
+    .querySelectorAll<HTMLElement>('[data-reveal]:not([data-reveal="hero"])')
+    .forEach((element) => {
+      delays.set(element, Number(element.dataset.revealDelay) || 0);
+    });
 
   document.querySelectorAll("[data-reveal-group]").forEach((group) => {
     Array.from(group.children).forEach((element, index) => {
@@ -15,37 +17,52 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
     });
   });
 
+  const prepared = new Map<Element, Animation>();
   const observer = new IntersectionObserver((entries) => {
     if (reducedMotion.matches) return;
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
       observer.unobserve(entry.target);
 
-      const animation = entry.target.animate(
-        [
-          { opacity: 0, translate: "0 12px" },
-          { opacity: getComputedStyle(entry.target).opacity, translate: "0 0" },
-        ],
-        {
-          duration: 650,
-          delay: delays.get(entry.target) ?? 0,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-          fill: "backwards",
-        },
-      );
-      animations.add(animation);
-      animation.addEventListener("finish", () => animations.delete(animation), {
-        once: true,
-      });
+      prepared.get(entry.target)?.play();
+      prepared.delete(entry.target);
     }
-  }, { threshold: 0, rootMargin: "0px 0px -24px 0px" });
+  }, { threshold: 0, rootMargin: "0px 0px 80px 0px" });
 
-  delays.forEach((_, element) => observer.observe(element));
+  delays.forEach((delay, element) => {
+    // Never hide content that has already reached the viewport, including
+    // restored scroll positions or a page whose script loaded slowly.
+    if (element.getBoundingClientRect().top < window.innerHeight) return;
+
+    const animation = element.animate(
+      [
+        { opacity: 0, translate: "0 12px" },
+        { opacity: getComputedStyle(element).opacity, translate: "0 0" },
+      ],
+      {
+        duration: 650,
+        delay,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        fill: "backwards",
+      },
+    );
+    // Establish the starting frame before observing, rather than resetting
+    // a visible element to zero opacity in the observer callback.
+    animation.pause();
+    animation.currentTime = 0;
+    prepared.set(element, animation);
+    animations.add(animation);
+    animation.addEventListener("finish", () => animations.delete(animation), {
+      once: true,
+    });
+    observer.observe(element);
+  });
 
   reducedMotion.addEventListener("change", () => {
     if (!reducedMotion.matches) return;
     observer.disconnect();
     animations.forEach((animation) => animation.cancel());
     animations.clear();
+    prepared.clear();
   });
 }
